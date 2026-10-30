@@ -1,36 +1,432 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Proyecto IAW</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Titan Fitness - Inicio</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #28282e;
+      color: #e8e8ea;
+    }
+
+    a { color: #e8e8ea; }
+
+    /* ---------- CABECERA ---------- */
+    .cabecera {
+      background: #24415c;
+      border-bottom: 2px solid #e8e8ea;
+    }
+
+    .cabecera__contenido {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff6b35;
+      text-decoration: none;
+    }
+
+    .menu {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .menu a {
+      text-decoration: none;
+      padding-bottom: 2px;
+    }
+
+    .menu a:hover { color: #ff6b35; }
+    .menu .activo { font-weight: bold; border-bottom: 2px solid #e8e8ea; }
+
+    a:focus-visible {
+      outline: 2px solid #ff6b35;
+      outline-offset: 3px;
+    }
+
+    /* ---------- CONTENIDO ---------- */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .bloque { margin-top: 48px; }
+
+    h1, h2 { color: #ff6b35; }
+    h1 { font-size: 2.2rem; margin: 0 0 12px; }
+    h2 { font-size: 1.5rem; margin: 0 0 16px; }
+
+    .boton {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #ff6b35;
+      color: #28282e;
+      font-weight: bold;
+      text-decoration: none;
+      border: 1px solid #e8e8ea;
+      border-radius: 6px;
+    }
+
+    .boton:hover { background: #ff8456; color: #28282e; }
+
+    .boton--claro {
+      background: transparent;
+      color: #e8e8ea;
+    }
+
+    .boton--claro:hover { background: #24415c; color: #e8e8ea; }
+
+    /* ---------- PORTADA ---------- */
+    .portada {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .portada p { margin: 0 0 20px; line-height: 1.6; color: #b9c6d3; }
+
+    .portada__botones { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .portada__imagen {
+      height: 240px;
+      background: #2d4a2b;
+      border: 2px solid #e8e8ea;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b9c6d3;
+    }
+
+    /* ---------- TARJETAS ---------- */
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .tarjeta {
+      border: 1px solid #e8e8ea;
+      border-radius: 8px;
+      padding: 12px;
+    }
+
+    .tarjeta__imagen {
+      height: 110px;
+      background: #2d4a2b;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .tarjeta h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .tarjeta p { margin: 0; font-size: 0.9rem; color: #b9c6d3; line-height: 1.5; }
+
+    /* ---------- PLANES ---------- */
+    .planes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .plan {
+      border: 1px solid #e8e8ea;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .plan h3 { margin: 0 0 8px; }
+    .plan .precio { font-size: 1.8rem; font-weight: bold; margin: 0 0 16px; }
+
+    .plan--basico { background: #24415c; }
+    .plan--pro { background: #6b5a1a; }
+    .plan--vip { background: #5e2d28; }
+
+    .enlace-seccion { margin-top: 16px; }
+
+    /* ---------- AVISO SOCIOS ---------- */
+    .socios {
+      background: #24415c;
+      border: 1px solid #e8e8ea;
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .socios h2 { margin: 0 0 6px; }
+    .socios p { margin: 0; color: #b9c6d3; }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      background: #24415c;
+      border-top: 2px solid #e8e8ea;
+      margin-top: 40px;
+    }
+
+    .footer__contenido {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1.2fr;
+      gap: 32px;
+    }
+
+    .footer__marca {
+      margin: 0 0 8px;
+      font-size: 1.5rem;
+      color: #ff6b35;
+    }
+
+    .footer__lema { margin: 0 0 6px; }
+
+    .footer__texto-suave {
+      margin: 0 0 16px;
+      font-size: 0.875rem;
+      color: #b9c6d3;
+    }
+
+    .footer__boton {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #ff6b35;
+      color: #28282e;
+      font-weight: bold;
+      text-decoration: none;
+      border: 1px solid #e8e8ea;
+      border-radius: 6px;
+    }
+
+    .footer h2 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: #ff6b35;
+    }
+
+    .footer ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .footer li { margin-bottom: 8px; }
+
+    .footer a { color: #e8e8ea; }
+    .footer a:hover { color: #ff6b35; }
+    .footer a:focus-visible {
+      outline: 2px solid #ff6b35;
+      outline-offset: 3px;
+    }
+    .footer .footer__boton:hover { color: #28282e; background: #ff8456; }
+
+    .footer address {
+      font-style: normal;
+      line-height: 1.7;
+    }
+
+    .footer__legal {
+      background: #28282e;
+      border-top: 1px solid #e8e8ea;
+    }
+
+    .footer__legal-contenido {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 24px;
+      font-size: 0.875rem;
+    }
+
+    .footer__legal p { margin: 0; }
+
+    .footer__legal ul {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer__legal li { margin: 0; }
+    .footer__legal a { color: #b9c6d3; }
+
+    /* ---------- MÓVIL ---------- */
+    @media (max-width: 700px) {
+      .portada { grid-template-columns: 1fr; }
+      .footer__contenido { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-	<header>
-		<h1>Proyecto IAW</h1>
-		<nav aria-label="Navegación principal">
-			<ul>
-				<li><a href="#inicio">Inicio</a></li>
-				<li><a href="#contenido">Contenido</a></li>
-				<li><a href="#contacto">Contacto</a></li>
-			</ul>
-		</nav>
-	</header>
 
-	<main>
-		<section id="inicio">
-			<h2>Inicio</h2>
-		</section>
-		<section id="contenido">
-			<h2>Contenido</h2>
-		</section>
-		<section id="contacto">
-			<h2>Contacto</h2>
-		</section>
-	</main>
+  <!-- CABECERA -->
+  <div class="cabecera">
+    <div class="cabecera__contenido">
+      <a class="logo" href="index.html">TITAN FITNESS</a>
+      <nav aria-label="Navegación principal">
+        <ul class="menu">
+          <li><a class="activo" href="index.html">Inicio</a></li>
+          <li><a href="instalaciones.html">Instalaciones</a></li>
+          <li><a href="tarifas.html">Tarifas</a></li>
+          <li><a href="acceso-socios.html">Acceso socios</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 
-	<footer>
-		<p>&copy; 2026 Proyecto IAW</p>
-	</footer>
+  <main>
+
+    <!-- PORTADA -->
+    <div class="portada">
+      <div>
+        <h1>Entrena en Titan Fitness</h1>
+        <p>
+          Tu centro deportivo en Jaén. Consulta los horarios, reserva tus clases
+          colectivas y apunta tus series y pesos desde la zona de socios.
+        </p>
+        <div class="portada__botones">
+          <a class="boton" href="tarifas.html">Hazte socio</a>
+          <a class="boton boton--claro" href="acceso-socios.html">Reserva tu clase</a>
+        </div>
+      </div>
+      <div class="portada__imagen">Imagen del centro</div>
+    </div>
+
+    <!-- INSTALACIONES -->
+    <div class="bloque">
+      <h2>Nuestras instalaciones</h2>
+      <div class="tarjetas">
+        <div class="tarjeta">
+          <div class="tarjeta__imagen"></div>
+          <h3>Zona de cardio</h3>
+          <p>Cintas, bicicletas y elípticas para calentar o para tu sesión completa.</p>
+        </div>
+        <div class="tarjeta">
+          <div class="tarjeta__imagen"></div>
+          <h3>Zona de fuerza</h3>
+          <p>Máquinas y peso libre para trabajar todos los grupos musculares.</p>
+        </div>
+        <div class="tarjeta">
+          <div class="tarjeta__imagen"></div>
+          <h3>Sala de spinning</h3>
+          <p>Clases guiadas con música y bicicletas para todos los niveles.</p>
+        </div>
+        <div class="tarjeta">
+          <div class="tarjeta__imagen"></div>
+          <h3>Vestuarios</h3>
+          <p>Taquillas, duchas y zona de descanso para antes y después de entrenar.</p>
+        </div>
+      </div>
+      <p class="enlace-seccion"><a href="instalaciones.html">Ver todas las instalaciones</a></p>
+    </div>
+
+    <!-- TARIFAS -->
+    <div class="bloque">
+      <h2>Elige tu plan</h2>
+      <div class="planes">
+        <div class="plan plan--basico">
+          <h3>Básico</h3>
+          <p class="precio">19 €/mes</p>
+          <a class="boton" href="tarifas.html">Elegir</a>
+        </div>
+        <div class="plan plan--pro">
+          <h3>Mensual Pro</h3>
+          <p class="precio">39 €/mes</p>
+          <a class="boton" href="tarifas.html">Elegir</a>
+        </div>
+        <div class="plan plan--vip">
+          <h3>Anual VIP</h3>
+          <p class="precio">349 €/año</p>
+          <a class="boton" href="tarifas.html">Elegir</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ZONA DE SOCIOS -->
+    <div class="bloque">
+      <div class="socios">
+        <div>
+          <h2>¿Ya eres socio?</h2>
+          <p>Entra para reservar clases y registrar tus entrenos.</p>
+        </div>
+        <a class="boton" href="acceso-socios.html">Acceso socios</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__contenido">
+
+      <section>
+        <p class="footer__marca"><strong>TITAN FITNESS</strong></p>
+        <p class="footer__lema">Centro deportivo en Jaén</p>
+        <p class="footer__texto-suave">Entrena, reserva y sigue tu progreso.</p>
+        <a class="footer__boton" href="acceso-socios.html">Acceso socios</a>
+      </section>
+
+      <nav aria-label="Navegación del pie de página">
+        <h2>Navegación</h2>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="instalaciones.html">Instalaciones</a></li>
+          <li><a href="tarifas.html">Tarifas</a></li>
+          <li><a href="acceso-socios.html">Acceso socios</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <section>
+        <h2>Contacto</h2>
+        <address>
+          Calle Ejemplo 12, Jaén<br>
+          Tel. <a href="tel:+34953000000">953 000 000</a><br>
+          L-V 07:00–22:00<br>
+          S-D 09:00–18:00
+        </address>
+      </section>
+
+    </div>
+
+    <div class="footer__legal">
+      <div class="footer__legal-contenido">
+        <p>&copy; 2026 Titan Fitness. Todos los derechos reservados.</p>
+        <ul>
+          <li><a href="aviso-legal.html">Aviso legal</a></li>
+          <li><a href="privacidad.html">Privacidad</a></li>
+          <li><a href="cookies.html">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
